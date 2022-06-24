@@ -22,12 +22,14 @@ const GetCommon = () => {
 	const MinimumLengthArray = Data[index];
 	const Ele = MinimumLengthArray.map((ele) => ele.name);
 
-	const Result = Data.map((element) => Ele.map((e) =>
-		element.find((t) => t.name === e)));
+	Data.map((element) => Ele.map((e) => {
+		const CheckItem = element.find((t) => t.name === e);
 
-	console.log(Result);
+		return CheckItem === undefined ? Ele.pop(e) : Ele;
+	}));
+	const result = MinimumLengthArray.filter((item) => Ele.includes(item.name));
 
-	return Result;
+	console.log(result);
 };
 
 export default GetCommon;
